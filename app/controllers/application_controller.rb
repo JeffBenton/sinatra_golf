@@ -8,6 +8,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    "We live?"
+    erb :'/application/login'
   end
 end
