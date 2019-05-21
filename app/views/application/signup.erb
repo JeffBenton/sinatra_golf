@@ -1,7 +1,21 @@
-<form method="post" action="/signup">
-  Email: <input type="text" name="email">
-  Username: <input type="text" name="name">
-  Password: <input type="password" name="password">
-  <input type="submit" name="submit" value="Sign Up">
-</form>
-<p>or <a href="/">log in</a></p>
+<div class="row">
+  <div class="col offset-md-4 col-md-3">
+    <form method="post" action="/signup">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="username">
+      </div>
+      Email: <input type="text" name="email">
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+    <p>or <a href="/">log in</a></p>
+  </div>
+</div>
