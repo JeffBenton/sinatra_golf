@@ -8,14 +8,52 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    redirect '/home' if Helper.is_logged_in?(session)
+
+    @session = session
     erb :'/application/login'
   end
 
   get '/signup' do
+    redirect '/home' if Helper.is_logged_in?(session)
+
+    @session = session
     erb :'/application/signup'
   end
 
   get '/home' do
+    redirect '/' if !Helper.is_logged_in?(session)
+
+    @user = Helper.current_user(session)
+    @session = session
     erb :'/application/index'
+  end
+
+  get '/logout' do
+    session.clear
+    redirect "/"
+  end
+
+  post '/login' do
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect '/home'
+    else
+      redirect "/"
+    end
+  end
+
+  post '/signup' do
+    redirect "/signup" if params[:username].empty? || params[:email].empty? || params[:password].empty?
+
+    user = User.new(params)
+
+    if user.save
+      session[:user_id] = user.id
+      redirect "/login"
+    else
+      redirect "/signup"
+    end
   end
 end
