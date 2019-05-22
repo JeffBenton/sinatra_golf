@@ -8,8 +8,5 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'require_all'
 gem 'bcrypt'
 gem 'shotgun'
-
-group :development do
-  gem 'pry'
-  gem 'tux'
-end
+gem 'pry'
+gem 'tux'

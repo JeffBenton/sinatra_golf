@@ -1,3 +1,3 @@
-class Courses < ActiveRecord::Base
+class Course < ActiveRecord::Base
   has_many :scores
 end
