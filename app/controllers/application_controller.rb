@@ -10,4 +10,12 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :'/application/login'
   end
+
+  get '/signup' do
+    erb :'/application/signup'
+  end
+
+  get '/home' do
+    erb :'/application/index'
+  end
 end
