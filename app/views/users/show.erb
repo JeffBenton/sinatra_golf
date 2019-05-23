@@ -1,5 +1,10 @@
-<h2>Email: <%= @user.email %></h2>
-<h2>Username: <%= @user.username %></h2>
+<div class="row">
+  <h2 class="col col-md-6">Email: <%= @user.email %></h2>
+  <a class="col offset-md-4 col-md-2 btn btn-primary" href="/users/<%= @user.id %>/edit"><button class="btn btn-primary">Edit Info</button></a>
+</div>
+<div class="row">
+  <h2 class="col col-md-3">Username: <%= @user.username %></h2>
+</div>
 
 <div class="row">
   <div class="col offset-md-2 col-md-4">
