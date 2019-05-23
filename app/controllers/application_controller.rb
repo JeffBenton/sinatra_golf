@@ -51,7 +51,7 @@ class ApplicationController < Sinatra::Base
 
     if user.save
       session[:user_id] = user.id
-      redirect "/login"
+      redirect "/home"
     else
       redirect "/signup"
     end

@@ -1,5 +1,15 @@
 <div class="row">
+  <div class="col offset-md-2 col-md-4">
+    <h2>All Recent Scores</h2>
+    <% Score.limit(5).each do |score| %>
+      <h3><%= score.course.name %>: <%= score.to_array.sum %></h3>
+      <p>- posted by: <%= score.user.username %></p>
+    <% end %>
+  </div>
   <div class="col offset-md-1 col-md-4">
-
+    <h2>Your Recent Scores</h2>
+    <% @user.scores[0..4].each do |score| %>
+      <h3><%= score.course.name %>: <%= score.to_array.sum %></h3>
+    <% end %>
   </div>
 </div>
