@@ -2,8 +2,8 @@
   <div class="col offset-md-2 col-md-4">
     <h2>All Recent Scores</h2>
     <% Score.limit(5).each do |score| %>
-      <h3><%= score.course.name %>: <%= score.to_array.sum %></h3>
-      <p>- posted by: <%= score.user.username %></p>
+      <a href="/scores/<%= score.id %>"><h3><%= score.course.name %>: <%= score.to_array.sum %></h3></a>
+      <p>- posted by: <a href="/users/<%= score.user.id %>"><%= score.user.username %></a></p>
     <% end %>
   </div>
   <div class="col offset-md-1 col-md-4">

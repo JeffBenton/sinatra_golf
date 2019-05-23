@@ -1,0 +1,18 @@
+<h2>Email: <%= @user.email %></h2>
+<h2>Username: <%= @user.username %></h2>
+
+<div class="row">
+  <div class="col offset-md-2 col-md-4">
+    <h2>Scores</h2>
+    <% @user.scores.each do |score| %>
+      <h3><%= score.course.name %>:  <%= score.to_array.sum %></h3>
+    <% end %>
+  </div>
+
+  <div class="col offset-md-1 col-md-4">
+    <h2>Courses</h2>
+    <% @user.courses.uniq.each do |course| %>
+      <h3><%= course.name %></h3>
+    <% end %>
+  </div>
+</div>
