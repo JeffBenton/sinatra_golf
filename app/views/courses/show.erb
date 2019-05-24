@@ -1,2 +1,41 @@
-<h2>Name: <%= @course.name %></h2>
+<div class="row">
+  <h2 class="col col-md-6"><%= @course.name %></h2>
+  <a class="col offset-md-2 btn btn-primary col-md-2" href="/courses/<%= @course.id %>/edit"><button class="btn btn-primary">Edit</button></a>
+  <form class="col col-md-2 btn btn-danger" method="post" action="/courses/<%= @course.id %>/delete">
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+</div>
 
+<table class="table">
+  <thead>
+    <th scope="col">Hole</th>
+    <% (1..9).each do |num| %>
+      <th scope="col"><%= num %></th>
+    <% end %>
+    <th scope="col">Out</th>
+    <% (10..18).each do |num| %>
+      <th scope="col"><%= num %></th>
+    <% end %>
+    <th scope="col">In</th>
+    <th scope="col">Total</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="col">Par</th>
+      <% @course.to_array[0,9].each do |hole| %>
+        <td scope="col"><%= hole %></td>
+      <% end %>
+      <td scope="col"><%= @course.to_array[0,9].sum %></td>
+      <% @course.to_array[9,18].each do |hole| %>
+        <td scope="col"><%= hole %></td>
+      <% end %>
+      <td scope="col"><%= @course.to_array[9,18].sum %></td>
+      <td scope="col"><%= @course.to_array.sum %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Recent Scores at <%= @course.name %></h3>
+<% Score.where(course_id: @course.id).limit(5).each do |score| %>
+  <p><%= score.to_array.sum %> -<%= score.user.username %></p>
+<% end %>
