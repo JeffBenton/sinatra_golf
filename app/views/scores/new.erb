@@ -1,0 +1,25 @@
+<div class="row">
+  <form method="post" action="/scores/new" class="col">
+    <% Course.all.each do |course| %>
+      <div class="radio form-group col">
+        <label><input type="radio" value="<%= course.id %>" name="course_id"> <%= course.name %></label>
+      </div>
+    <% end %>
+    <div class="form-group col col-md-8">
+      <label>Score Card</label>
+      <table class="table">
+        <th scope="col">Hole</th>
+        <% (1..18).each do |num| %>
+          <th scope="col"><%= num %></th>
+        <% end %>
+        <tr>
+          <th scope="col">Score</th>
+          <% (1..18).each do || %>
+            <td style="padding-left: 10px"><input style="width: 30px; padding-left: 7px;" type="text" name="score_card[]"></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>

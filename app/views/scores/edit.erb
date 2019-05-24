@@ -1,0 +1,26 @@
+<div class="row">
+  <form method="post" action="/scores/<%= @score.id %>/edit" class="col">
+    <div class="form-group col col-md-8">
+      <label>Score Card</label>
+      <table class="table">
+        <th scope="col">Hole</th>
+        <% (1..18).each do |num| %>
+          <th scope="col"><%= num %></th>
+        <% end %>
+        <tr>
+          <th scope="col">Par</th>
+          <% @score.course.to_array.each do |hole| %>
+            <td scope="col"><%= hole %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <th scope="col">Score</th>
+          <% @score.to_array.each do |score| %>
+            <td style="padding-left: 10px"><input style="width: 30px; padding-left: 7px;" type="text" name="score_card[]" value="<%= score %>"></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>

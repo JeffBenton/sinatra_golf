@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23aeee31-96d0-445c-942a-921229bf3937" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/courses_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/courses_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/courses/index.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/courses/index.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/courses/new.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/courses/new.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/courses/show.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/courses/show.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/scores_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/scores_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/application/index.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/application/index.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/scores/show.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/scores/show.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/show.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/show.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/development.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db/development.sqlite" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,16 +30,12 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/courses/new.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" lean-forward="true" selection-end-line="24" />
-              <folding>
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="20" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -47,47 +44,61 @@
         <entry file="file://$PROJECT_DIR$/app/views/courses/show.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="107" lean-forward="true" selection-start-line="2" selection-start-column="107" selection-end-line="2" selection-end-column="124" />
+              <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="5" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/users/show.erb">
+        <entry file="file://$PROJECT_DIR$/app/views/application/index.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state>
+              <caret column="17" selection-start-column="17" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layout.erb">
+        <entry file="file://$PROJECT_DIR$/app/views/scores/show.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="50" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
+        <entry file="file://$PROJECT_DIR$/app/views/scores/index.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+            <state relative-caret-position="90">
+              <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/courses/edit.erb">
+        <entry file="file://$PROJECT_DIR$/app/controllers/scores_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="585">
+              <caret line="39" column="3" lean-forward="true" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/scores/new.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="75" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/scores/edit.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -119,33 +130,37 @@
         <option value="$PROJECT_DIR$/app/helpers/helpers.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20190523012951_add_date_to_scores.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/scores_controller.rb" />
         <option value="$PROJECT_DIR$/config.ru" />
-        <option value="$PROJECT_DIR$/app/views/scores/show.erb" />
         <option value="$PROJECT_DIR$/app/views/users/edit.rb" />
-        <option value="$PROJECT_DIR$/app/views/users/show.erb" />
         <option value="$PROJECT_DIR$/app/views/users/edit.erb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layout.erb" />
         <option value="$PROJECT_DIR$/db/migrate/20190524002818_change_score_to_scorecard.rb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
-        <option value="$PROJECT_DIR$/app/views/application/index.erb" />
         <option value="$PROJECT_DIR$/app/models/concerns/arrayable.rb" />
         <option value="$PROJECT_DIR$/app/models/scores.rb" />
         <option value="$PROJECT_DIR$/app/models/courses.rb" />
         <option value="$PROJECT_DIR$/app/views/application/signup.erb" />
         <option value="$PROJECT_DIR$/app/views/courses/index.erb" />
-        <option value="$PROJECT_DIR$/app/views/courses/new.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/courses/edit.erb" />
         <option value="$PROJECT_DIR$/app/views/courses/show.erb" />
+        <option value="$PROJECT_DIR$/app/views/courses/edit.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/courses/new.erb" />
+        <option value="$PROJECT_DIR$/app/views/scores/new.erb" />
+        <option value="$PROJECT_DIR$/app/views/application/index.erb" />
+        <option value="$PROJECT_DIR$/app/views/users/show.erb" />
+        <option value="$PROJECT_DIR$/app/views/scores/index.erb" />
+        <option value="$PROJECT_DIR$/app/views/scores/show.erb" />
+        <option value="$PROJECT_DIR$/app/views/scores/edit.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/scores_controller.rb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1328" />
-    <option name="height" value="1245" />
+    <option name="x" value="92" />
+    <option name="y" value="37" />
+    <option name="width" value="1618" />
+    <option name="height" value="1305" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -155,7 +170,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -173,6 +187,12 @@
               <item name="sinatra_golf" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sinatra_golf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sinatra_golf" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sinatra_golf" type="b2602c69:ProjectViewProjectNode" />
@@ -205,6 +225,13 @@
               <item name="sinatra_golf" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="scores" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sinatra_golf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sinatra_golf" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="users" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -227,6 +254,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -263,12 +291,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1558382765162</updated>
-      <workItem from="1558382766560" duration="39711000" />
+      <workItem from="1558382766560" duration="44720000" />
+      <workItem from="1558718896073" duration="2842000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39711000" />
+    <option name="totallyTimeSpent" value="47562000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -280,13 +309,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1328" height="1245" extended-state="0" />
+    <frame x="92" y="37" width="1618" height="1305" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2690513" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.22208121" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49904305" visible="true" weight="0.20468344" />
+      <window_info anchor="bottom" id="Messages" weight="0.3297609" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49904305" visible="true" weight="0.19455895" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50095695" side_tool="true" weight="0.20468344" />
       <window_info anchor="bottom" id="Version Control" order="3" />
@@ -298,7 +328,7 @@
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="11" sideWeight="0.49952152" weight="0.32957503" />
-      <window_info anchor="right" id="Database" order="0" weight="0.3297143" />
+      <window_info anchor="right" id="Database" order="0" weight="0.32970452" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
@@ -346,13 +376,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/helpers.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/application/login.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -360,20 +383,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20190523012951_add_date_to_scores.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/scores/show.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190523012951_add_date_to_scores.rb" />
     <entry file="file://$PROJECT_DIR$/config.ru">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -423,13 +433,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/scores_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -465,13 +468,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/application/index.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -500,46 +496,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/courses/edit.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="61" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/helpers.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+        <state relative-caret-position="570">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/courses/new.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="20" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/application/index.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/show.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="135">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/scores/new.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="75" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/courses/show.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="107" lean-forward="true" selection-start-line="2" selection-start-column="107" selection-end-line="2" selection-end-column="124" />
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="5" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/courses/new.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/scores/index.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" lean-forward="true" selection-end-line="24" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/courses/edit.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/scores/show.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="50" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/scores/edit.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/scores_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="3" lean-forward="true" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
         </state>
       </provider>
     </entry>

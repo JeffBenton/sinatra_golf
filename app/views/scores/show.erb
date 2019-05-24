@@ -1,4 +1,52 @@
-<h2>Course: <a href="/courses/<%= @score.course.id %>"><%= @score.course.name %></a></h2>
+<div class="row">
+  <h2 class="col">Course: <a href="/courses/<%= @score.course.id %>"><%= @score.course.name %></a></h2>
+  <a class="col offset-md-2 btn btn-primary col-md-2" href="/scores/<%= @score.id %>/edit"><button class="btn btn-primary">Edit</button></a>
+  <form class="col col-md-2 btn btn-danger" method="post" action="/scores/<%= @score.id %>/delete">
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+</div>
+
 <h2>Score: <%= @score.to_array.sum %></h2>
 <h3>User: <%= @score.user.username %></h3>
 
+<table class="table">
+  <thead>
+  <th scope="col">Hole</th>
+  <% (1..9).each do |num| %>
+    <th scope="col"><%= num %></th>
+  <% end %>
+  <th scope="col">Out</th>
+  <% (10..18).each do |num| %>
+    <th scope="col"><%= num %></th>
+  <% end %>
+  <th scope="col">In</th>
+  <th scope="col">Total</th>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="col">Score</th>
+    <% @score.course.to_array[0,9].each do |hole| %>
+      <td scope="col"><%= hole %></td>
+    <% end %>
+    <td scope="col"><%= @score.course.to_array[0,9].sum %></td>
+    <% @score.course.to_array[9,18].each do |hole| %>
+      <td scope="col"><%= hole %></td>
+    <% end %>
+    <td scope="col"><%= @score.course.to_array[9,18].sum %></td>
+    <td scope="col"><%= @score.course.to_array.sum %></td>
+  </tr>
+  </tr>
+  <tr>
+    <th scope="col">Score</th>
+    <% @score.to_array[0,9].each do |hole| %>
+      <td scope="col"><%= hole %></td>
+    <% end %>
+    <td scope="col"><%= @score.to_array[0,9].sum %></td>
+    <% @score.to_array[9,18].each do |hole| %>
+      <td scope="col"><%= hole %></td>
+    <% end %>
+    <td scope="col"><%= @score.to_array[9,18].sum %></td>
+    <td scope="col"><%= @score.to_array.sum %></td>
+  </tr>
+  </tbody>
+</table>

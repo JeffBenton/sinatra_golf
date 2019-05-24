@@ -9,7 +9,7 @@
 <div class="row">
   <div class="col offset-md-2 col-md-4">
     <h2>Scores</h2>
-    <% @user.scores.each do |score| %>
+    <% @user.scores.reverse.each do |score| %>
       <h3><%= score.course.name %>:  <%= score.to_array.sum %></h3>
     <% end %>
   </div>

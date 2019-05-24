@@ -1,0 +1,8 @@
+<div class="row">
+  <% Score.all.reverse.each do |score| %>
+    <div class="col col-md-3">
+      <h3><%= score.course.name %>: <%= score.to_array.sum %></h3>
+      <p>- posted by <%= score.user.username %></p>
+    </div>
+  <% end %>
+</div>
