@@ -14,7 +14,7 @@
         <tr>
           <th scope="col">Par</th>
           <% (1..18).each do || %>
-            <td style="padding-left: 10px"><input style="width: 30px; padding-left: 7px;" type="text" name="score_card[]"></td>
+            <td style="padding-left: 10px"><input onkeypress="return isNumberKey(event)" maxlength="2" style="width: 30px; padding-left: 7px;" type="text" name="score_card[]"></td>
           <% end %>
         </tr>
       </table>
@@ -22,3 +22,12 @@
     <button type="submit" class="btn btn-primary">Create</button>
   </form>
 </div>
+
+<script>
+    function isNumberKey(evt) {
+        if (evt.which < 48 || evt.which > 57) {
+            return false;
+        }
+        return true;
+    }
+</script>

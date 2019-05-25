@@ -10,7 +10,13 @@ class UsersController < ApplicationController
   get '/users/:id' do
     redirect '/' if !Helper.is_logged_in?(session)
 
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
+
+    if !@user
+      flash[:user] = "The user you're looking for does not exist"
+      redirect "/users"
+    end
+
     @session = session
     erb :'/users/show'
   end
@@ -58,7 +64,13 @@ class UsersController < ApplicationController
   get '/users/:id/edit' do
     redirect '/' if !Helper.is_logged_in?(session)
 
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
+
+    if !@user
+      flash[:user] = "The user you're looking for does not exist"
+      redirect "/users"
+    end
+
     @session = session
     erb :'/users/edit'
   end

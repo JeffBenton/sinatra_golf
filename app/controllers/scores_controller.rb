@@ -17,7 +17,13 @@ class ScoresController < ApplicationController
   get '/scores/:id' do
     redirect "/" if !Helper.is_logged_in?(session)
 
-    @score = Score.find(params[:id])
+    @score = Score.find_by_id(params[:id])
+
+    if !@score
+      flash[:score] = "The score you're looking for does not exist"
+      redirect "/scores"
+    end
+
     @session = session
     erb :'/scores/show'
   end
@@ -39,7 +45,13 @@ class ScoresController < ApplicationController
   get '/scores/:id/edit' do
     redirect "/" if !Helper.is_logged_in?(session)
 
-    @score = Score.find(params[:id])
+    @score = Score.find_by_id(params[:id])
+
+    if !@score
+      flash[:score] = "The score you're looking for does not exist"
+      redirect "/scores"
+    end
+
     @session = session
     erb :"/scores/edit"
   end

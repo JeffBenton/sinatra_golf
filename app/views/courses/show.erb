@@ -1,9 +1,11 @@
 <div class="row">
   <h2 class="col col-md-6"><%= @course.name %></h2>
-  <a class="col offset-md-2 btn btn-primary col-md-2" href="/courses/<%= @course.id %>/edit"><button class="btn btn-primary">Edit</button></a>
-  <form class="col col-md-2 btn btn-danger" method="post" action="/courses/<%= @course.id %>/delete">
-    <button type="submit" class="btn btn-danger">Delete</button>
-  </form>
+  <% if Helper.current_user(session).is_admin %>
+    <a class="col offset-md-2 btn btn-primary col-md-2" href="/courses/<%= @course.id %>/edit"><button class="btn btn-primary">Edit</button></a>
+    <form class="col col-md-2 btn btn-danger" method="post" action="/courses/<%= @course.id %>/delete">
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  <% end %>
 </div>
 
 <table class="table">
@@ -36,6 +38,8 @@
 </table>
 
 <h3>Recent Scores at <%= @course.name %></h3>
-<% Score.where(course_id: @course.id).limit(5).each do |score| %>
-  <p><%= score.to_array.sum %> -<%= score.user.username %></p>
-<% end %>
+<div class="row">
+  <% Score.where(course_id: @course.id).limit(5).each do |score| %>
+    <h4 class="col col-md-3"><a href="/scores/<%= score.id %>"><%= score.to_array.sum %></a> - by <a href="/users/<%= score.user.id %>"><%= score.user.username %></a></h4>
+  <% end %>
+</div>
