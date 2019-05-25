@@ -4,6 +4,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
+    register Sinatra::Flash
     set :session_secret, "very secure"
   end
 
@@ -40,12 +41,21 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = user.id
       redirect '/home'
     else
+      flash[:credentials] = "Incorrect username and/or password."
       redirect "/"
     end
   end
 
   post '/signup' do
     redirect "/signup" if params[:username].empty? || params[:email].empty? || params[:password].empty?
+
+    if User.find_by(email: params[:email])
+      flash[:email] = "A user with that email already exists, please use a different one."
+      redirect "/signup"
+    elsif User.find_by(username: params[:username])
+      flash[:username] = "A user with that username already exists, please choose a different one."
+      redirect "/signup"
+    end
 
     user = User.new(params)
 

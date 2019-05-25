@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
 
+  get '/users' do
+    redirect '/' if !Helper.is_logged_in?(session)
+
+    @session = session
+    erb :'/users/index'
+  end
+
   get '/users/:id' do
+    redirect '/' if !Helper.is_logged_in?(session)
+
     @user = User.find(params[:id])
     @session = session
     erb :'/users/show'
@@ -22,9 +31,20 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id/edit' do
+    redirect '/' if !Helper.is_logged_in?(session)
+
     @user = User.find(params[:id])
     @session = session
     erb :'/users/edit'
   end
 
+  post '/users/:id/delete' do
+    User.delete(params[:id])
+    redirect "/users"
+  end
+
+  post '/users/:id/admin' do
+    User.update(params[:id], is_admin: true)
+    redirect "/users"
+  end
 end

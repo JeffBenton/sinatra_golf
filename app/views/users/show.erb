@@ -1,6 +1,8 @@
 <div class="row">
   <h2 class="col col-md-6">Email: <%= @user.email %></h2>
-  <a class="col offset-md-4 col-md-2 btn btn-primary" href="/users/<%= @user.id %>/edit"><button class="btn btn-primary">Edit Info</button></a>
+  <% if @user.id == @session[:user_id] %>
+    <a class="col offset-md-4 col-md-2 btn btn-primary" href="/users/<%= @user.id %>/edit"><button class="btn btn-primary">Edit Info</button></a>
+  <% end %>
 </div>
 <div class="row">
   <h2 class="col col-md-3">Username: <%= @user.username %></h2>
@@ -10,14 +12,14 @@
   <div class="col offset-md-2 col-md-4">
     <h2>Scores</h2>
     <% @user.scores.reverse.each do |score| %>
-      <h3><%= score.course.name %>:  <%= score.to_array.sum %></h3>
+      <h3><a href="/scores/<%= score.id %>"><%= score.course.name %>:  <%= score.to_array.sum %></a></h3>
     <% end %>
   </div>
 
   <div class="col offset-md-1 col-md-4">
     <h2>Courses</h2>
     <% @user.courses.uniq.each do |course| %>
-      <h3><%= course.name %></h3>
+      <h3><a href="/courses/<%= course.id %>"><%= course.name %></a></h3>
     <% end %>
   </div>
 </div>
