@@ -1,3 +1,5 @@
+require 'uri'
+
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -41,19 +43,26 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = user.id
       redirect '/home'
     else
-      flash[:credentials] = "Incorrect username and/or password."
+      flash[:credentials] = "Incorrect username and/or password"
       redirect "/"
     end
   end
 
   post '/signup' do
-    redirect "/signup" if params[:username].empty? || params[:email].empty? || params[:password].empty?
-
-    if User.find_by(email: params[:email])
-      flash[:email] = "A user with that email already exists, please use a different one."
+    binding.pry
+    if params[:username].empty? || params[:email].empty? || params[:password].empty?
+      flash[:username] = "Username cannot be blank" if params[:username].empty?
+      flash[:email] = "Email cannot be blank" if params[:email].empty?
+      flash[:password] = "Password cannot be blank" if params[:password].empty?
+      redirect "/signup"
+    elsif !params[:email].match(URI::MailTo::EMAIL_REGEXP).present?
+      flash[:email] = "Email must be valid"
+      redirect "/signup"
+    elsif User.find_by(email: params[:email])
+      flash[:email] = "A user with that email already exists, please use a different one"
       redirect "/signup"
     elsif User.find_by(username: params[:username])
-      flash[:username] = "A user with that username already exists, please choose a different one."
+      flash[:username] = "A user with that username already exists, please choose a different one"
       redirect "/signup"
     end
 
