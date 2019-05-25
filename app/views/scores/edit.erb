@@ -16,7 +16,7 @@
         <tr>
           <th scope="col">Score</th>
           <% @score.to_array.each do |score| %>
-            <td style="padding-left: 10px"><input style="width: 30px; padding-left: 7px;" type="text" name="score_card[]" value="<%= score %>"></td>
+            <td style="padding-left: 10px"><input onkeypress="return isNumberKey(event)" maxlength="2" style="width: 30px; padding-left: 7px;" type="text" name="score_card[]" value="<%= score %>"></td>
           <% end %>
         </tr>
       </table>
@@ -24,3 +24,12 @@
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
 </div>
+
+<script>
+    function isNumberKey(evt) {
+        if (evt.which < 48 || evt.which > 57) {
+            return false;
+        }
+        return true;
+    }
+</script>

@@ -1,13 +1,15 @@
 <div class="row">
   <h2 class="col">Course: <a href="/courses/<%= @score.course.id %>"><%= @score.course.name %></a></h2>
-  <a class="col offset-md-2 btn btn-primary col-md-2" href="/scores/<%= @score.id %>/edit"><button class="btn btn-primary">Edit</button></a>
-  <form class="col col-md-2 btn btn-danger" method="post" action="/scores/<%= @score.id %>/delete">
+  <% if @score.user.id == @session[:user_id] %>
+    <a class="col offset-md-2 btn btn-primary col-md-2" href="/scores/<%= @score.id %>/edit"><button class="btn btn-primary">Edit</button></a>
+    <form class="col col-md-2 btn btn-danger" method="post" action="/scores/<%= @score.id %>/delete">
     <button type="submit" class="btn btn-danger">Delete</button>
+  <% end %>
   </form>
 </div>
 
 <h2>Score: <%= @score.to_array.sum %></h2>
-<h3>User: <%= @score.user.username %></h3>
+<h3>User: <a href="/users/<%= @score.user.id %>"><%= @score.user.username %></a></h3>
 
 <table class="table">
   <thead>
@@ -24,7 +26,7 @@
   </thead>
   <tbody>
   <tr>
-    <th scope="col">Score</th>
+    <th scope="col">Par</th>
     <% @score.course.to_array[0,9].each do |hole| %>
       <td scope="col"><%= hole %></td>
     <% end %>
