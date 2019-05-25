@@ -50,6 +50,7 @@ class ApplicationController < Sinatra::Base
     user = User.new(params)
 
     if user.save
+      user.is_admin = true if User.all.length == 1
       session[:user_id] = user.id
       redirect "/home"
     else

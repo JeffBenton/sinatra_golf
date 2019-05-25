@@ -1,5 +1,5 @@
-jeff = User.new(email: "test@test.com", username: "jeff", password: "test")
-mike = User.new(email: "test2@test.com", username: "mike", password: "test")
+jeff = User.new(email: "test@test.com", username: "jeff", password: "test", is_admin: true)
+mike = User.new(email: "test2@test.com", username: "mike", password: "test", is_admin: false)
 
 whipp = Course.new(name: "Whippoorwill", score_card: "4, 4, 5, 3, 4, 5, 4, 3, 4, 4, 3, 4, 4, 4, 4, 5, 3, 4")
 glen = Course.new(name: "Glen Arbor", score_card: "5, 4, 3, 4, 5, 4, 3, 5, 4, 4, 3, 5, 4, 3, 5, 4, 3, 4")
