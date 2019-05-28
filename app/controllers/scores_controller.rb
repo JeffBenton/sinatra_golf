@@ -31,11 +31,11 @@ class ScoresController < ApplicationController
   post '/scores/new' do
     if !params.include?("course_id")
       flash[:course_id] = "Course selection cannot be empty"
-      redirect "/scores/new"
     elsif params[:score_card].include?("")
       flash[:score_card] = "You must enter a score for every hole"
-      redirect "/scores/new"
     end
+
+    redirect "/scores/new" if !flash.keep.empty?
 
     score = Score.create(course_id: params[:course_id], score_card: params[:score_card].join(", "))
     Helper.current_user(session).scores << score
