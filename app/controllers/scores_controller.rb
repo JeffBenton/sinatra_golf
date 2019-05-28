@@ -49,8 +49,11 @@ class ScoresController < ApplicationController
 
     if !@score
       flash[:score] = "The score you're looking for does not exist"
-      redirect "/scores"
+    elsif @score.user_id != Helper.current_user(session).id
+      flash[:user] = "You do not have permission to edit this score"
     end
+
+    redirect "/scores" if !flash.keep.empty?
 
     @session = session
     erb :"/scores/edit"

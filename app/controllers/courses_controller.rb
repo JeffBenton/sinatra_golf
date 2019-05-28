@@ -36,7 +36,7 @@ class CoursesController < ApplicationController
     if !@course
       flash[:course] = "The course you're looking for does not exist"
     elsif !Helper.current_user(session).is_admin
-      flash[:admin] = "You don't have permission to edit courses"
+      flash[:admin] = "You do not have permission to edit courses"
     end
 
     redirect "/courses" if !flash.keep.empty?
