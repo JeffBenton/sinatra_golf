@@ -66,8 +66,11 @@ class UsersController < ApplicationController
 
     if !@user
       flash[:user] = "The user you're looking for does not exist"
-      redirect "/users"
+    elsif @user.id != params[:id]
+      flash[:user] = "You do not have permission to edit that user"
     end
+
+    redirect "users" if !flash.keep.empty?
 
     @session = session
     erb :'/users/edit'
