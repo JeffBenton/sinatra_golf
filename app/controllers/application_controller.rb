@@ -49,7 +49,6 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-    binding.pry
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       flash[:username] = "Username cannot be blank" if params[:username].empty?
       flash[:email] = "Email cannot be blank" if params[:email].empty?
