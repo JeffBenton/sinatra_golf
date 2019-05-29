@@ -59,7 +59,7 @@ class ScoresController < ApplicationController
     erb :"/scores/edit"
   end
 
-  post '/scores/:id/edit' do
+  patch '/scores/:id/edit' do
     if params[:score_card].include?("")
       flash[:score_card] = "You must enter a score for every hole"
       redirect "/scores/#{params[:id]}/edit"
@@ -69,7 +69,7 @@ class ScoresController < ApplicationController
     redirect "/scores/#{params[:id]}"
   end
 
-  post '/scores/:id/delete' do
+  delete '/scores/:id/delete' do
     Score.delete(params[:id])
     redirect "/scores"
   end

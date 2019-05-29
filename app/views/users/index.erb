@@ -7,9 +7,11 @@
         <div class="row">
           <% if !user.is_admin %>
             <form method="post" action="/users/<%= user.id %>/delete">
+              <input type="hidden" name="_method" value="DELETE">
               <button class="btn btn-danger" type="submit">Delete</button>
             </form>
             <form method="post" action="users/<%= user.id %>/admin">
+              <input type="hidden" name="_method" value="PATCH">
               <button class="btn btn-primary" type="submit">Make Admin</button>
             </form>
           <% end %>

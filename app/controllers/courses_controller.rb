@@ -49,7 +49,7 @@ class CoursesController < ApplicationController
     if params[:name].empty?
       flash[:name] = "Course name cannot be blank"
     elsif params[:score_card].include?("")
-      redirect "/courses/new"
+      flash[:score] = "You must enter a par for each hole."
     elsif Course.find_by(name: params[:name])
       flash[:exists] = "A course with that name already exists"
     end
@@ -60,13 +60,13 @@ class CoursesController < ApplicationController
     redirect "/courses/#{course.id}"
   end
 
-  post '/courses/:id/delete' do
+  delete '/courses/:id/delete' do
     Course.delete(params[:id])
     Score.where(course_id: params[:id]).destroy_all
     redirect "/courses"
   end
 
-  post '/courses/:id/edit' do
+  patch '/courses/:id/edit' do
     if params[:name].empty?
       flash[:name] = "Course name cannot be blank"
     elsif params[:score_card].include?("")

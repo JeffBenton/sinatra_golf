@@ -20,6 +20,7 @@
   <div class="col offset-md-4 col-md-3">
     <h3>Update Information</h3>
     <form method="post" action="/users/<%= @user.id %>/edit">
+      <input type="hidden" name="_method" value="PATCH">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="text" class="form-control" id="email" name="email" value="<%= @user.email %>">
@@ -35,6 +36,7 @@
     <br>
 
     <h3>Change Password</h3>
+    <input type="hidden" name="_method" value="PATCH">
     <a href="" onclick="swap()" class="pw">Show Passwords</a>
     <form method="post" action="/users/<%= @user.id %>/edit_password">
       <div class="form-group">

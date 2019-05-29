@@ -1,5 +1,6 @@
 <div class="row">
   <form method="post" action="/courses/<%= @course.id %>/edit" class="col">
+    <input type="hidden" name="_method" value="PATCH">
     <div class="form-group col col-md-6">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" name="name" value="<%= @course.name %>">

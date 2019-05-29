@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     erb :'/users/show'
   end
 
-  post '/users/:id/edit' do
+  patch '/users/:id/edit' do
     if params[:username].empty? || params[:email].empty?
       flash[:username] = "Username cannot be blank" if params[:username].empty?
       flash[:email] = "Email cannot be blank" if params[:email].empty?
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     redirect "/users/#{params[:id]}"
   end
 
-  post '/users/:id/edit_password' do
+  patch '/users/:id/edit_password' do
     if params[:current_password].empty? || params[:new_password].empty? || params[:new_password_confirm].empty?
       flash[:current_password] = "Current password cannot be empty" if params[:current_password].empty?
       flash[:new_password] = "New password cannot be empty" if params[:new_password].empty?
@@ -76,12 +76,12 @@ class UsersController < ApplicationController
     erb :'/users/edit'
   end
 
-  post '/users/:id/delete' do
+  delete '/users/:id/delete' do
     User.delete(params[:id])
     redirect "/users"
   end
 
-  post '/users/:id/admin' do
+  patch '/users/:id/admin' do
     User.update(params[:id], is_admin: true)
     redirect "/users"
   end
