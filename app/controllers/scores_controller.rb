@@ -61,7 +61,7 @@ class ScoresController < ApplicationController
     erb :"/scores/edit"
   end
 
-  patch '/scores/:id/edit' do
+  patch '/scores/:id' do
     redirect "/" if !Helper.is_logged_in?(session)
 
     if Helper.current_user(session).id != Score.find_by_id(params[:id]).user_id
@@ -76,7 +76,7 @@ class ScoresController < ApplicationController
     redirect "/scores/#{params[:id]}"
   end
 
-  delete '/scores/:id/delete' do
+  delete '/scores/:id' do
     redirect "/" if !Helper.is_logged_in?(session)
 
     if Helper.current_user(session).id != Score.find_by_id(params[:id]).user_id

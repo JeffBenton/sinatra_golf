@@ -62,7 +62,7 @@ class CoursesController < ApplicationController
     redirect "/courses/#{course.id}"
   end
 
-  delete '/courses/:id/delete' do
+  delete '/courses/:id' do
     redirect "/" if !Helper.is_logged_in?(session)
 
     if !Helper.current_user(session).is_admin
@@ -75,7 +75,7 @@ class CoursesController < ApplicationController
     redirect "/courses"
   end
 
-  patch '/courses/:id/edit' do
+  patch '/courses/:id' do
     redirect "/" if !Helper.is_logged_in?(session)
 
     if !Helper.current_user(session).is_admin

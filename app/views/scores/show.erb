@@ -2,7 +2,7 @@
   <h2 class="col">Course: <a href="/courses/<%= @score.course.id %>"><%= @score.course.name %></a></h2>
   <% if @score.user.id == @session[:user_id] %>
     <a class="col offset-md-2 btn btn-primary col-md-2" href="/scores/<%= @score.id %>/edit"><button class="btn btn-primary">Edit</button></a>
-    <form class="col col-md-2 btn btn-danger" method="post" action="/scores/<%= @score.id %>/delete">
+    <form class="col col-md-2 btn btn-danger" method="post" action="/scores/<%= @score.id %>">
       <input type="hidden" name="_method" value="DELETE">
     <button type="submit" class="btn btn-danger">Delete</button>
   <% end %>

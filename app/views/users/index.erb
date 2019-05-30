@@ -6,7 +6,7 @@
       <% if User.find(@session[:user_id]).is_admin %>
         <div class="row">
           <% if !user.is_admin %>
-            <form method="post" action="/users/<%= user.id %>/delete">
+            <form method="post" action="/users/<%= user.id %>">
               <input type="hidden" name="_method" value="DELETE">
               <button class="btn btn-danger" type="submit">Delete</button>
             </form>

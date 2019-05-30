@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     erb :'/users/show'
   end
 
-  patch '/users/:id/edit' do
+  patch '/users/:id' do
     redirect "/" if !Helper.is_logged_in?(session)
 
     if Helper.current_user(session).id != params[:id].to_i
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     erb :'/users/edit'
   end
 
-  delete '/users/:id/delete' do
+  delete '/users/:id' do
     redirect "/" if !Helper.is_logged_in?(session)
 
     if !Helper.current_user(session).is_admin

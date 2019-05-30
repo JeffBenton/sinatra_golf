@@ -2,7 +2,7 @@
   <h2 class="col col-md-6"><%= @course.name %></h2>
   <% if Helper.current_user(session).is_admin %>
     <a class="col offset-md-2 btn btn-primary col-md-2" href="/courses/<%= @course.id %>/edit"><button class="btn btn-primary">Edit</button></a>
-    <form class="col col-md-2 btn btn-danger" method="post" action="/courses/<%= @course.id %>/delete">
+    <form class="col col-md-2 btn btn-danger" method="post" action="/courses/<%= @course.id %>">
       <input type="hidden" name="_method" value="DELETE">
       <button type="submit" class="btn btn-danger">Delete</button>
     </form>

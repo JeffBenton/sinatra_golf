@@ -19,7 +19,7 @@
 <div class="row">
   <div class="col offset-md-4 col-md-3">
     <h3>Update Information</h3>
-    <form method="post" action="/users/<%= @user.id %>/edit">
+    <form method="post" action="/users/<%= @user.id %>">
       <input type="hidden" name="_method" value="PATCH">
       <div class="form-group">
         <label for="email">Email</label>
