@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
 
     if !@user
-      flash[:user] = "The user you're looking for does not exist"
+      flash[:no_exist] = "The user you're looking for does not exist"
       redirect "/users"
     end
 
@@ -25,8 +25,7 @@ class UsersController < ApplicationController
     redirect "/" if !Helper.is_logged_in?(session)
 
     if Helper.current_user(session).id != params[:id].to_i
-      flash[:user] = "You don't have permission to do that"
-      redirect "/home"
+      flash[:invalid_permission] = "You don't have permission to do that"
     elsif params[:username].empty? || params[:email].empty?
       flash[:username] = "Username cannot be blank" if params[:username].empty?
       flash[:email] = "Email cannot be blank" if params[:email].empty?
@@ -38,7 +37,7 @@ class UsersController < ApplicationController
       flash[:username] = "A user with that username already exists, please choose a different one"
     end
 
-    redirect "/users/#{params[:id]}/edit" if !flash.keep.empty?
+    redirect "/users/#{params[:id]}/edit" if !flash.keys.empty?
 
     User.update(params[:id], username: params[:username], email: params[:email])
     redirect "/users/#{params[:id]}"
@@ -55,16 +54,19 @@ class UsersController < ApplicationController
       flash[:new_password] = "New password cannot be empty" if params[:new_password].empty?
       flash[:new_password_confirm] = "Confirm new password cannot be empty" if params[:new_password_confirm].empty?
     elsif params[:current_password] == params[:new_password]
-      flash[:password] = "The new password cannot be the same as your current password"
+      flash[:current_password] = "The new password cannot be the same as your current password"
+    elsif params[:new_password] != params[:new_password_confirm]
+      flash[:current_password] = "New passwords do not match"
     end
 
-    redirect "/users/#{params[:id]}/edit" if !flash.keep.empty?
+    redirect "/users/#{params[:id]}/edit" if !flash.keys.empty?
 
     user = User.find(params[:id])
-    if user.authenticate(params[:current_password]) && params[:new_password] == params[:new_password_confirm]
+    if user.authenticate(params[:current_password])
       User.update(params[:id], password: params[:new_password])
       redirect "/users/#{params[:id]}"
     else
+      flash[:incorrect_password] = "Your password is incorrect"
       redirect "/users/#{params[:id]}/edit"
     end
   end
@@ -76,11 +78,11 @@ class UsersController < ApplicationController
 
     if !@user
       flash[:user] = "The user you're looking for does not exist"
-    elsif @user.id != params[:id].to_i
+    elsif Helper.current_user(session).id != params[:id].to_i
       flash[:user] = "You do not have permission to edit that user"
     end
 
-    redirect "users" if !flash.keep.empty?
+    redirect "users" if flash.keys.include?(:user)
 
     @session = session
     erb :'/users/edit'
@@ -95,6 +97,7 @@ class UsersController < ApplicationController
     end
 
     User.delete(params[:id])
+    Score.where(user_id: params[:id]).destroy_all
     redirect "/users"
   end
 

@@ -36,9 +36,9 @@
     <br>
 
     <h3>Change Password</h3>
-    <input type="hidden" name="_method" value="PATCH">
-    <a href="" onclick="swap()" class="pw">Show Passwords</a>
+    <a href="" onclick="swap()" class="pw">Show/Hide Passwords</a>
     <form method="post" action="/users/<%= @user.id %>/edit_password">
+      <input type="hidden" name="_method" value="PATCH">
       <div class="form-group">
         <label for="current_passowrd">Current Password</label>
         <input type="password" class="form-control" id="current_password" name="current_password">
