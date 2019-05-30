@@ -66,7 +66,7 @@ class ApplicationController < Sinatra::Base
     elsif User.find_by(username: params[:username])
       flash[:username] = "A user with that username already exists, please choose a different one"
     end
-    binding.pry
+
     redirect "/signup" if !flash.keys.empty?
 
     user = User.new(params)
