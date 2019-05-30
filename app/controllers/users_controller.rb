@@ -27,14 +27,15 @@ class UsersController < ApplicationController
     if Helper.current_user(session).id != params[:id].to_i
       flash[:invalid_permission] = "You don't have permission to do that"
     elsif params[:username].empty? || params[:email].empty?
-      flash[:edit_error] = "Username cannot be blank" if params[:username].empty?
-      flash[:edit_error_2] = "Email cannot be blank" if params[:email].empty?
+      flash[:username] = "Username cannot be blank" if params[:username].empty?
+      flash[:email] = "Email cannot be blank" if params[:email].empty?
     elsif !params[:email].match(URI::MailTo::EMAIL_REGEXP).present?
-      flash[:edit_error] = "Email must be valid"
+      flash[:email] = "Email must be valid"
+      binding.pry
     elsif User.find_by(email: params[:email]) && User.find_by(email: params[:email]).id != params[:id].to_i
-      flash[:edit_error] = "A user with that email already exists, please use a different one"
+      flash[:email] = "A user with that email already exists, please use a different one"
     elsif User.find_by(username: params[:username]) && User.find_by(username: params[:username]).id != params[:id].to_i
-      flash[:edit_error] = "A user with that username already exists, please choose a different one"
+      flash[:username] = "A user with that username already exists, please choose a different one"
     end
 
     redirect "/users/#{params[:id]}/edit" if !flash.keep.empty?
