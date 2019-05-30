@@ -1,6 +1,6 @@
 <a class="col offset-md-10 col-md-2 btn btn-primary" href="/courses/new"><button class="btn btn-primary">Add Course</button></a>
 
-<% Course.all.each do |course| %>
+<% Course.all.order(name: "asc").each do |course| %>
   <a href="/courses/<%= course.id %>"><h2><%= course.name %></h2></a>
   <h4>par <%= course.to_array.sum %></h4>
 <% end %>

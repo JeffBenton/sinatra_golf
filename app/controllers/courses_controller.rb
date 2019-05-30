@@ -94,4 +94,11 @@ class CoursesController < ApplicationController
     Course.update(params[:id], name: params[:name], score_card: params[:score_card].join(", "))
     redirect "/courses/#{params[:id]}"
   end
+
+  get '/*' do
+    redirect "/" if !Helper.is_logged_in?(session)
+
+    @session = session
+    erb :'/catchall'
+  end
 end
