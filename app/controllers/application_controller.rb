@@ -55,6 +55,7 @@ class ApplicationController < Sinatra::Base
   post '/signup' do
     redirect '/home' if Helper.is_logged_in?(session)
 
+    binding.pry
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       flash[:username] = "Username cannot be blank" if params[:username].empty?
       flash[:email] = "Email cannot be blank" if params[:email].empty?
