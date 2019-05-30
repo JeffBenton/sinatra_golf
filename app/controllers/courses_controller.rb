@@ -34,12 +34,12 @@ class CoursesController < ApplicationController
     @course = Course.find_by_id(params[:id])
 
     if !@course
-      flash[:course] = "The course you're looking for does not exist"
+      flash[:error] = "The course you're looking for does not exist"
     elsif !Helper.current_user(session).is_admin
-      flash[:admin] = "You do not have permission to edit courses"
+      flash[:error] = "You do not have permission to edit courses"
     end
 
-    redirect "/courses" if !flash.keep.empty?
+    redirect "/courses" if flash.keys.include?(:error)
 
     @session = session
     erb :'/courses/edit'
@@ -56,7 +56,7 @@ class CoursesController < ApplicationController
       flash[:exists] = "A course with that name already exists"
     end
 
-    redirect "/courses/new" if !flash.keep.empty?
+    redirect "/courses/new" if !flash.keys.empty?
 
     course = Course.create(name: params[:name], score_card: params[:score_card].join(", "))
     redirect "/courses/#{course.id}"
@@ -89,10 +89,9 @@ class CoursesController < ApplicationController
       flash[:exists] = "A course with that name already exists"
     end
 
-    redirect "/courses/#{params[:id]}/edit" if !flash.keep.empty?
+    redirect "/courses/#{params[:id]}/edit" if !flash.keys.empty?
 
     Course.update(params[:id], name: params[:name], score_card: params[:score_card].join(", "))
     redirect "/courses/#{params[:id]}"
   end
-
 end

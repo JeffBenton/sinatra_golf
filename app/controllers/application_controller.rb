@@ -1,4 +1,5 @@
 # require 'uri'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -6,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    register Sinatra::Flash
+    use Rack::Flash
     set :session_secret, "very secure"
   end
 
@@ -66,8 +67,8 @@ class ApplicationController < Sinatra::Base
     elsif User.find_by(username: params[:username])
       flash[:username] = "A user with that username already exists, please choose a different one"
     end
-
-    redirect "/signup" if !flash.keep.empty?
+    binding.pry
+    redirect "/signup" if !flash.keys.empty?
 
     user = User.new(params)
     user.is_admin = true if User.all.length == 0

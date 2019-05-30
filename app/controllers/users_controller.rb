@@ -31,14 +31,13 @@ class UsersController < ApplicationController
       flash[:email] = "Email cannot be blank" if params[:email].empty?
     elsif !params[:email].match(URI::MailTo::EMAIL_REGEXP).present?
       flash[:email] = "Email must be valid"
-      binding.pry
     elsif User.find_by(email: params[:email]) && User.find_by(email: params[:email]).id != params[:id].to_i
       flash[:email] = "A user with that email already exists, please use a different one"
     elsif User.find_by(username: params[:username]) && User.find_by(username: params[:username]).id != params[:id].to_i
       flash[:username] = "A user with that username already exists, please choose a different one"
     end
 
-    redirect "/users/#{params[:id]}/edit" if !flash.keep.empty?
+    redirect "/users/#{params[:id]}/edit" if !flash.keys.empty?
 
     User.update(params[:id], username: params[:username], email: params[:email])
     redirect "/users/#{params[:id]}"
@@ -59,13 +58,15 @@ class UsersController < ApplicationController
     elsif params[:new_password] != params[:new_password_confirm]
       flash[:current_password] = "New passwords do not match"
     end
-    redirect "/users/#{params[:id]}/edit" if flash.keep.include?(:current_password) || flash.keep.include?(:new_password) || flash.keep.include?(:new_password_confirm)
+
+    redirect "/users/#{params[:id]}/edit" if !flash.keys.empty?
 
     user = User.find(params[:id])
     if user.authenticate(params[:current_password])
       User.update(params[:id], password: params[:new_password])
       redirect "/users/#{params[:id]}"
     else
+      flash[:incorrect_password] = "Your password is incorrect"
       redirect "/users/#{params[:id]}/edit"
     end
   end
@@ -81,7 +82,7 @@ class UsersController < ApplicationController
       flash[:user] = "You do not have permission to edit that user"
     end
 
-    redirect "users" if flash.keep.include?(:user)
+    redirect "users" if flash.keys.include?(:user)
 
     @session = session
     erb :'/users/edit'
@@ -96,6 +97,7 @@ class UsersController < ApplicationController
     end
 
     User.delete(params[:id])
+    Score.where(user_id: params[:id]).destroy_all
     redirect "/users"
   end
 

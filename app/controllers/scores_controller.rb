@@ -32,12 +32,12 @@ class ScoresController < ApplicationController
     redirect "/" if !Helper.is_logged_in?(session)
 
     if !params.include?("course_id")
-      flash[:course_id] = "Course selection cannot be empty"
+      flash[:error] = "Course selection cannot be empty"
     elsif params[:score_card].include?("")
-      flash[:score_card] = "You must enter a score for every hole"
+      flash[:error] = "You must enter a score for every hole"
     end
 
-    redirect "/scores/new" if !flash.keep.empty?
+    redirect "/scores/new" if flash.keys.include?(:error)
 
     score = Score.create(course_id: params[:course_id], score_card: params[:score_card].join(", "))
     Helper.current_user(session).scores << score
@@ -50,12 +50,12 @@ class ScoresController < ApplicationController
     @score = Score.find_by_id(params[:id])
 
     if !@score
-      flash[:score] = "The score you're looking for does not exist"
+      flash[:error] = "The score you're looking for does not exist"
     elsif @score.user_id != Helper.current_user(session).id
-      flash[:user] = "You do not have permission to edit this score"
+      flash[:error] = "You do not have permission to edit this score"
     end
 
-    redirect "/scores" if !flash.keep.empty?
+    redirect "/scores" if flash.keys.include?(:error)
 
     @session = session
     erb :"/scores/edit"
