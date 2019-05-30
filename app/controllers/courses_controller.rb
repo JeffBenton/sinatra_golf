@@ -46,6 +46,8 @@ class CoursesController < ApplicationController
   end
 
   post '/courses/new' do
+    redirect "/" if !Helper.is_logged_in?(session)
+
     if params[:name].empty?
       flash[:name] = "Course name cannot be blank"
     elsif params[:score_card].include?("")
@@ -61,13 +63,25 @@ class CoursesController < ApplicationController
   end
 
   delete '/courses/:id/delete' do
+    redirect "/" if !Helper.is_logged_in?(session)
+
+    if !Helper.current_user(session).is_admin
+      flash[:admin] = "You don't have permission to do that"
+      redirect "/home"
+    end
+
     Course.delete(params[:id])
     Score.where(course_id: params[:id]).destroy_all
     redirect "/courses"
   end
 
   patch '/courses/:id/edit' do
-    if params[:name].empty?
+    redirect "/" if !Helper.is_logged_in?(session)
+
+    if !Helper.current_user(session).is_admin
+      flash[:admin] = "You don't have permission to do that"
+      redirect "/home"
+    elsif params[:name].empty?
       flash[:name] = "Course name cannot be blank"
     elsif params[:score_card].include?("")
       flash[:score_card] = "You must enter a par for every hole"

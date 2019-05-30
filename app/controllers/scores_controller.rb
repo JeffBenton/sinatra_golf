@@ -29,6 +29,8 @@ class ScoresController < ApplicationController
   end
 
   post '/scores/new' do
+    redirect "/" if !Helper.is_logged_in?(session)
+
     if !params.include?("course_id")
       flash[:course_id] = "Course selection cannot be empty"
     elsif params[:score_card].include?("")
@@ -60,7 +62,12 @@ class ScoresController < ApplicationController
   end
 
   patch '/scores/:id/edit' do
-    if params[:score_card].include?("")
+    redirect "/" if !Helper.is_logged_in?(session)
+
+    if Helper.current_user(session).id != Score.find_by_id(params[:id]).user_id
+      flash[:user] = "You don't have permission to do that"
+      redirect "/home"
+    elsif params[:score_card].include?("")
       flash[:score_card] = "You must enter a score for every hole"
       redirect "/scores/#{params[:id]}/edit"
     end
@@ -70,6 +77,13 @@ class ScoresController < ApplicationController
   end
 
   delete '/scores/:id/delete' do
+    redirect "/" if !Helper.is_logged_in?(session)
+
+    if Helper.current_user(session).id != Score.find_by_id(params[:id]).user_id
+      flash[:user] = "You don't have permission to do that"
+      redirect "/home"
+    end
+
     Score.delete(params[:id])
     redirect "/scores"
   end

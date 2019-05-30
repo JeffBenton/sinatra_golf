@@ -22,7 +22,12 @@ class UsersController < ApplicationController
   end
 
   patch '/users/:id/edit' do
-    if params[:username].empty? || params[:email].empty?
+    redirect "/" if !Helper.is_logged_in?(session)
+
+    if Helper.current_user(session).id != params[:id].to_i
+      flash[:user] = "You don't have permission to do that"
+      redirect "/home"
+    elsif params[:username].empty? || params[:email].empty?
       flash[:username] = "Username cannot be blank" if params[:username].empty?
       flash[:email] = "Email cannot be blank" if params[:email].empty?
     elsif !params[:email].match(URI::MailTo::EMAIL_REGEXP).present?
@@ -40,7 +45,12 @@ class UsersController < ApplicationController
   end
 
   patch '/users/:id/edit_password' do
-    if params[:current_password].empty? || params[:new_password].empty? || params[:new_password_confirm].empty?
+    redirect "/" if !Helper.is_logged_in?(session)
+
+    if Helper.current_user(session).id != params[:id].to_i
+      flash[:user] = "You don't have permission to do that"
+      redirect "/home"
+    elsif params[:current_password].empty? || params[:new_password].empty? || params[:new_password_confirm].empty?
       flash[:current_password] = "Current password cannot be empty" if params[:current_password].empty?
       flash[:new_password] = "New password cannot be empty" if params[:new_password].empty?
       flash[:new_password_confirm] = "Confirm new password cannot be empty" if params[:new_password_confirm].empty?
@@ -66,7 +76,7 @@ class UsersController < ApplicationController
 
     if !@user
       flash[:user] = "The user you're looking for does not exist"
-    elsif @user.id != params[:id]
+    elsif @user.id != params[:id].to_i
       flash[:user] = "You do not have permission to edit that user"
     end
 
@@ -77,11 +87,25 @@ class UsersController < ApplicationController
   end
 
   delete '/users/:id/delete' do
+    redirect "/" if !Helper.is_logged_in?(session)
+
+    if !Helper.current_user(session).is_admin
+      flash[:user] = "You don't have permission to do that"
+      redirect "/home"
+    end
+
     User.delete(params[:id])
     redirect "/users"
   end
 
   patch '/users/:id/admin' do
+    redirect "/" if !Helper.is_logged_in?(session)
+
+    if !Helper.current_user(session).is_admin
+      flash[:user] = "You don't have permission to do that"
+      redirect "/home"
+    end
+
     User.update(params[:id], is_admin: true)
     redirect "/users"
   end

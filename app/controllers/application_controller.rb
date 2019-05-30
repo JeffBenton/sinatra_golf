@@ -33,11 +33,15 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/logout' do
+    redirect '/' if !Helper.is_logged_in?(session)
+
     session.clear
     redirect "/"
   end
 
   post '/login' do
+    redirect '/home' if Helper.is_logged_in?(session)
+
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
@@ -49,6 +53,8 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
+    redirect '/home' if Helper.is_logged_in?(session)
+
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       flash[:username] = "Username cannot be blank" if params[:username].empty?
       flash[:email] = "Email cannot be blank" if params[:email].empty?
