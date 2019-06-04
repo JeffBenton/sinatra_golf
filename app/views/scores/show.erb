@@ -48,8 +48,8 @@
     <% @score.to_array[9,18].each do |hole| %>
       <td scope="col"><%= hole %></td>
     <% end %>
-    <td scope="col"><%= @score.to_array[9,18].sum %></td>
-    <td scope="col"><%= @score.to_array.sum %></td>
+    <td scope="col"><%= @score.total_sum(9,18) %></td>
+    <td scope="col"><%= @score.total_sum %></td>
   </tr>
   </tbody>
 </table>

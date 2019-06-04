@@ -64,10 +64,9 @@ class ScoresController < ApplicationController
   patch '/scores/:id' do
     redirect "/" if !Helper.is_logged_in?(session)
 
-    if Helper.current_user(session).id != Score.find_by_id(params[:id]).user_id
-      flash[:user] = "You don't have permission to do that"
-      redirect "/home"
-    elsif params[:score_card].include?("")
+    redirect_if_not_allowed(params[:id])
+
+    if params[:score_card].include?("")
       flash[:score_card] = "You must enter a score for every hole"
       redirect "/scores/#{params[:id]}/edit"
     end
@@ -86,5 +85,14 @@ class ScoresController < ApplicationController
 
     Score.delete(params[:id])
     redirect "/scores"
+  end
+
+  helpers do
+    def redirect_if_not_allowed(score_id)
+      if session[:user_id] != Score.find_by_id(score_id).user_id
+        flash[:user] = "You don't have permission to do that"
+        redirect "/home"
+      end
+    end
   end
 end
